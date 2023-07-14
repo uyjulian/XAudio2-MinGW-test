@@ -332,24 +332,24 @@ typedef struct XMA2PACKET
 // the bitfields cannot be read directly on little-endian architectures such as
 // the Intel x86, as they are laid out in big-endian form.)
 
-__inline DWORD GetXmaPacketFrameCount(__in_bcount(1) const BYTE* pPacket)
+__inline DWORD GetXmaPacketFrameCount( const BYTE* pPacket)
 {
     return (DWORD)(pPacket[0] >> 2);
 }
 
-__inline DWORD GetXmaPacketFirstFrameOffsetInBits(__in_bcount(3) const BYTE* pPacket)
+__inline DWORD GetXmaPacketFirstFrameOffsetInBits( const BYTE* pPacket)
 {
     return ((DWORD)(pPacket[0] & 0x3) << 13) |
            ((DWORD)(pPacket[1]) << 5) |
            ((DWORD)(pPacket[2]) >> 3);
 }
 
-__inline DWORD GetXmaPacketMetadata(__in_bcount(3) const BYTE* pPacket)
+__inline DWORD GetXmaPacketMetadata( const BYTE* pPacket)
 {
     return (DWORD)(pPacket[2] & 0x7);
 }
 
-__inline DWORD GetXmaPacketSkipCount(__in_bcount(4) const BYTE* pPacket)
+__inline DWORD GetXmaPacketSkipCount( const BYTE* pPacket)
 {
     return (DWORD)(pPacket[3]);
 }
@@ -401,10 +401,10 @@ __inline DWORD GetXmaPacketSkipCount(__in_bcount(4) const BYTE* pPacket)
 __inline HRESULT GetXmaBlockContainingSample
 (
     DWORD nBlockCount,                      // Blocks in the file (= seek table entries)
-    __in_ecount(nBlockCount) const DWORD* pSeekTable,  // Pointer to the seek table data
+     const DWORD* pSeekTable,  // Pointer to the seek table data
     DWORD nDesiredSample,                   // Decoded sample to locate
-    __out DWORD* pnBlockContainingSample,   // Index of the block containing the sample
-    __out DWORD* pnSampleOffsetWithinBlock  // Position of the sample in this block
+     DWORD* pnBlockContainingSample,   // Index of the block containing the sample
+     DWORD* pnSampleOffsetWithinBlock  // Position of the sample in this block
 )
 {
     DWORD nPreviousTotalSamples = 0;
@@ -435,8 +435,8 @@ __inline HRESULT GetXmaBlockContainingSample
 
 __inline DWORD GetXmaFrameLengthInBits
 (
-    __in_bcount(nBitPosition / 8 + 3)
-    __in const BYTE* pPacket,  // Pointer to XMA packet[s] containing the frame
+    
+     const BYTE* pPacket,  // Pointer to XMA packet[s] containing the frame
     DWORD nBitPosition         // Bit offset of the frame within this packet
 )
 {
@@ -465,7 +465,7 @@ __inline DWORD GetXmaFrameLengthInBits
 
 __inline DWORD GetXmaFrameBitPosition
 (
-    __in_bcount(nXmaDataBytes) const BYTE* pXmaData,  // Pointer to XMA block[s]
+     const BYTE* pXmaData,  // Pointer to XMA block[s]
     DWORD nXmaDataBytes,                              // Size of pXmaData in bytes
     DWORD nStreamIndex,                               // Stream within which to seek
     DWORD nDesiredFrame                               // Frame sought
@@ -529,7 +529,7 @@ __inline DWORD GetXmaFrameBitPosition
 
 __inline DWORD GetLastXmaFrameBitPosition
 (
-    __in_bcount(nXmaDataBytes) const BYTE* pXmaData,  // Pointer to XMA block[s]
+     const BYTE* pXmaData,  // Pointer to XMA block[s]
     DWORD nXmaDataBytes,                              // Size of pXmaData in bytes
     DWORD nStreamIndex                                // Stream within which to seek
 )
@@ -591,13 +591,13 @@ __inline DWORD GetLastXmaFrameBitPosition
 
 __inline HRESULT GetXmaDecodePositionForSample
 (
-    __in_bcount(nXmaDataBytes) const BYTE* pXmaData,  // Pointer to XMA block[s]
+     const BYTE* pXmaData,  // Pointer to XMA block[s]
     DWORD nXmaDataBytes,                              // Size of pXmaData in bytes
     DWORD nStreamIndex,                               // Stream within which to seek
     DWORD nDesiredSample,                             // Sample sought
-    __out DWORD* pnBitOffset,                         // Returns the bit offset within pXmaData of
+     DWORD* pnBitOffset,                         // Returns the bit offset within pXmaData of
                                                       // the frame containing the sample sought
-    __out DWORD* pnSubFrame                           // Returns the subframe containing the sample
+     DWORD* pnSubFrame                           // Returns the subframe containing the sample
 )
 {
     DWORD nDesiredFrame = nDesiredSample / XMA_SAMPLES_PER_FRAME;

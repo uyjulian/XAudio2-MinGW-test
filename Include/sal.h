@@ -40,37 +40,37 @@
 
 #define __ecount(size)
 #define __bcount(size)
-#define __in
-#define __in_ecount(size)
-#define __in_bcount(size)
+#define 
+#define 
+#define 
 #define __in_z
-#define __in_ecount_z(size)
-#define __in_bcount_z(size)
+#define 
+#define 
 #define __in_nz
-#define __in_ecount_nz(size)
-#define __in_bcount_nz(size)
-#define __out
-#define __out_ecount(size)
-#define __out_bcount(size)
-#define __out_ecount_part(size,length)
-#define __out_bcount_part(size,length)
-#define __out_ecount_full(size)
-#define __out_bcount_full(size)
+#define 
+#define 
+#define 
+#define 
+#define 
+#define 
+#define 
+#define 
+#define 
 #define __out_z
 #define __out_z_opt
-#define __out_ecount_z(size)
-#define __out_bcount_z(size)
-#define __out_ecount_part_z(size,length)
-#define __out_bcount_part_z(size,length)
-#define __out_ecount_full_z(size)
-#define __out_bcount_full_z(size)
+#define 
+#define 
+#define 
+#define 
+#define 
+#define 
 #define __out_nz
 #define __out_nz_opt
-#define __out_ecount_nz(size)
-#define __out_bcount_nz(size)
+#define 
+#define 
 #define __inout
-#define __inout_ecount(size)
-#define __inout_bcount(size)
+#define 
+#define 
 #define __inout_ecount_part(size,length)
 #define __inout_bcount_part(size,length)
 #define __inout_ecount_full(size)
@@ -83,7 +83,7 @@
 #define __inout_bcount_nz(size)
 #define __ecount_opt(size)
 #define __bcount_opt(size)
-#define __in_opt
+#define 
 #define __in_ecount_opt(size)
 #define __in_bcount_opt(size)
 #define __in_z_opt
@@ -123,7 +123,7 @@
 #define __inout_bcount_nz_opt(size)
 #define __deref_ecount(size)
 #define __deref_bcount(size)
-#define __deref_out
+#define 
 #define __deref_out_ecount(size)
 #define __deref_out_bcount(size)
 #define __deref_out_ecount_part(size,length)
